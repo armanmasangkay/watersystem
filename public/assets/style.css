@@ -1,0 +1,10 @@
+/* .input, select{
+    /* border: 1px solid #d2d2d2 !important; */
+    /* height: 40px !important; */
+    /* border-radius: 3px !important; */
+    /* width: 100% !important; */
+/* } */
+
+select ~ option{
+    padding: 5px !important;
+}

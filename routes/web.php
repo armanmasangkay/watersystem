@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterCustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.dashboard');
 });
+
+Route::get('/customer/register', [RegisterCustomerController::class, 'index'])->name('register_customer');
