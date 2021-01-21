@@ -53,12 +53,24 @@
       x.addEventListener("focus", myFocusFunction, true);
       x.addEventListener("blur", myBlurFunction, true);
 
+      var xx = document.getElementById("select1");
+      xx.addEventListener("focus", myFocusFunction1, true);
+      xx.addEventListener("blur", myBlurFunction1, true);
+
       function myFocusFunction() {
-        $('select').parent().addClass('is-focused')
+        $('#select').parent().addClass('is-focused')
       }
 
       function myBlurFunction() {
-        $('select').parent().removeClass('is-focused')
+        $('#select').parent().removeClass('is-focused')
+      }
+
+      function myFocusFunction1() {
+        $('#select1').parent().addClass('is-focused')
+      }
+
+      function myBlurFunction1() {
+        $('#select1').parent().removeClass('is-focused')
       }
 
       $().ready(function() {

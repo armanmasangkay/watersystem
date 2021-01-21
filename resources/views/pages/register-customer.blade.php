@@ -67,7 +67,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group bmd-form-group">
                                         <label class="bmd-label-static">Type of Connection</label>
-                                        <select name="connection_type" class="form-control" id="select">
+                                        <select name="connection_type" class="form-control" id="select1">
                                             <option></option>
                                             <option>Resedential</option>
                                         </select>
