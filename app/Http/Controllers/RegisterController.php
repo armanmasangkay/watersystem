@@ -26,7 +26,6 @@ class RegisterController extends Controller
             $count++;
 
         }while($customer->count()>0);
-
         return $tempAccNumber;
     }
 
@@ -53,7 +52,6 @@ class RegisterController extends Controller
                 
             ]);
       }
-
 
         Customer::create([
             'account_number'=>$this->generateNewAccountNumber(),
