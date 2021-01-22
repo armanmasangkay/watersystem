@@ -73,18 +73,40 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group bmd-form-group">
-                                        <label class="bmd-label-static">Type of Connection</label>
-                                        <select name="connection_type" class="form-control" id="connection_type">
+                                        <label class="bmd-label-static">Connection Type</label>
+                                        <select name="connection_type" class="form-control" id="select1">
                                             <option></option>
-                                            <option value="Resedential">Resedential</option>
+                                            <option>Resedential</option>
+                                            <option>Commercial</option>
+                                            <option>Institutional</option>
+                                            <option>Other</option>
                                         </select>
                                     </div>
                                     <small id="connection_type_err" class="text-danger" style="position: relative; top:-5px" ></small>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="">Connection Status</label>
-                                        <input type="text" name="connection_status" id="connection_status" class="form-control">
+                                        <label class="">Others (if type is other, please specify)</label>
+                                        <input type="text" name="connection_status_other" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-static">Connection Status</label>
+                                        <select name="connection_status" class="form-control" id="select1">
+                                            <option></option>
+                                            <option>Active</option>
+                                            <option>Inactive</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="">Others (if status is other, please specify)</label>
+                                        <input type="text" name="connection_status_other" class="form-control">
                                     </div>
                                     <small id="connection_status_err" class="text-danger" style="position: relative; top:-5px" ></small>
                                 </div>

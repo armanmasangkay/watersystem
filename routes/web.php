@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\RegisterCustomerController;
+use App\Http\Controllers\ViewCustomerController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +21,5 @@ Route::get('/', function () {
 });
 
 Route::get('/customer/register', [RegisterCustomerController::class, 'index'])->name('register_customer');
+
+Route::get('/customer/view-lists', [ViewCustomerController::class, 'index'])->name('view_customers');
