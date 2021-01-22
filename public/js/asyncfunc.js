@@ -1,24 +1,23 @@
-export async function registerCustomer(){
-    let firstname = document.getElementById('first_name').value;
-    let middlename = document.getElementById('middle_name').value;
-    let lastname = document.getElementById('last_name').value;
-    let civilStatus = document.getElementById('civil_status').value;
-    let sitioPurok = document.getElementById('sitio_purok').value;
-    let barangay = document.getElementById('barangay').value;
-    let contact = document.getElementById('contact').value;
-    let connection_type = document.getElementById('connection_type').value;
-    let connection_status = document.getElementById('connection_status').value;
+export function error(element, divErr, objectData){
+    if(element.value === ""){
+        divErr.innerHTML = objectData;
+    }else{
+        divErr.innerHTML = "";
+    }
+}
 
-    let bodyData = {
-        "firstname" : firstname,
-        "middlename" : middlename,
-        "lastname" : lastname,
-        "civil_status" : civilStatus,
-        "purok" : sitioPurok,
-        "brgy" : barangay,
-        "contact_number" : contact,
-        "connection_type" : connection_type,
-        "connection_status" : connection_status
+export  async function registerCustomer(firstname,middlename,lastname,civilStatus,sitioPurok,barangay,contact,connection_type,connection_status){
+
+     let bodyData = {
+        "firstname" : firstname.value,
+        "middlename" : middlename.value,
+        "lastname" : lastname.value,
+        "civil_status" : civilStatus.value,
+        "purok" : sitioPurok.value,
+        "brgy" : barangay.value,
+        "contact_number" : contact.value,
+        "connection_type" : connection_type.value,
+        "connection_status" : connection_status.value
     }
 
     const setup = {

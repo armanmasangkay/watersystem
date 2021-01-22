@@ -20,6 +20,8 @@
     <link href="{{ asset('assets/style.css') }}" rel="stylesheet" />
     <script src="{{asset('js/main.js') }}" defer type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10" defer></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
 </head>
 
 <body class="">
