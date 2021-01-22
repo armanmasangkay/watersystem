@@ -69,7 +69,7 @@
                                         <label class="bmd-label-static">Connection Type</label>
                                         <select name="connection_type" class="form-control" id="select1">
                                             <option></option>
-                                            <option>Resedential</option>
+                                            <option>Residential</option>
                                             <option>Commercial</option>
                                             <option>Institutional</option>
                                             <option>Other</option>
