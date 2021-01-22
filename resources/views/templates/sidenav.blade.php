@@ -5,7 +5,7 @@
         Tip 2: you can also add an image using data-image tag
         -->
     <div class="logo">
-        <a href="" class="simple-text logo-normal text-warning">
+        <a href="" class="simple-text logo-normal">
         <strong>Marcrohon WMS</strong>
         </a>
     </div>
@@ -17,32 +17,34 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./user.html">
+            <li class="nav-item {{ Request::is('user*') ? 'active' : '' }}">
+                <a class="nav-link" href="#" id="navbarUserDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">lock</i>
                     <p>System User</p>
                 </a>
+                <div class="dropdown-menu pb-3" aria-labelledby="navbarUserDropdownMenuLink">
+                    <a class="dropdown-item" href="#">New User</a>
+                    <a class="dropdown-item" href="#">View Users</a>
+                </div>
             </li>
             <li class="nav-item dropdown {{ Request::is('customer*') ? 'active' : '' }}">
-                <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="#" id="navbarAccountDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">persons</i>
                     <p>Client Account</p>
                 </a>
-                <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu pb-3" aria-labelledby="navbarAccountDropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('register_customer') }}">New Client Account</a>
-                    <a class="dropdown-item" href="#">View Accounts</a>
+                    <a class="dropdown-item" href="{{ route('view_customers') }}">View Accounts</a>
                     <a class="dropdown-item" href="#">Bill and Payments</a>
-                    <a class="dropdown-item" href="#">Another Notification</a>
-                    <a class="dropdown-item" href="#">Another One</a>
                 </div>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" href="./tables.html">
-                    <i class="material-icons">content_paste</i>
-                    <p>Table List</p>
+                    <i class="material-icons">settings</i>
+                    <p>System Setup</p>
                 </a>
             </li>
-            <li class="nav-item ">
+            <!-- <li class="nav-item ">
                 <a class="nav-link" href="./typography.html">
                     <i class="material-icons">library_books</i>
                     <p>Typography</p>
@@ -65,19 +67,7 @@
                     <i class="material-icons">notifications</i>
                     <p>Notifications</p>
                 </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./rtl.html">
-                    <i class="material-icons">language</i>
-                    <p>RTL Support</p>
-                </a>
-            </li>
-            <li class="nav-item active-pro ">
-                <a class="nav-link" href="./upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>
