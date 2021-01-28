@@ -29,7 +29,7 @@ Route::get('/', function () {
 //ADMIN ROUTES
 
 Route::prefix('admin')->group(function(){
-    Route::get('/register-customer', [RegisterCustomerController::class, 'index'])->name('register_customer');
+    Route::get('/register-customer', [RegisterCustomerController::class, 'index'])->name('admin.register_customer');
     Route::post('/register-customer', [RegisterCustomerController::class, 'store']);
 
 

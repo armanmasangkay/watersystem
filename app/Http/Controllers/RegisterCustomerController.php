@@ -44,8 +44,22 @@ class RegisterCustomerController extends Controller
             'barangay'=>'required',
             'contact'=>'required|numeric',
             'connection_type'=>'required',
-            'connection_status'=>'required',            
+            'connection_status'=>'required',  
+            'connection_type_other'=>'required_if:connection_type,other',
+            'connection_status_other'=>'required_if:connection_status,other'       
         ]);
+
+        $connectionType=$request->connection_type;
+        $connectionStatus=$request->connection_status;
+
+        if($connectionType==="other"){
+            $connectionType=$request->connection_type_other;
+        }
+
+        if($connectionStatus==="other"){
+            $connectionStatus=$request->connection_status_other;
+        }
+
 
         Customer::create([
             'account_number'=>$this->generateNewAccountNumber(),
@@ -56,9 +70,13 @@ class RegisterCustomerController extends Controller
             'purok'=>$request->sitio_purok,
             'brgy'=>$request->barangay,
             'contact_number'=>$request->contact,
-            'connection_type'=>$request->connection_type,
-            'connection_status'=>$request->connection_status
+            'connection_type'=>$connectionType,
+            'connection_status'=>$connectionStatus
         ]);
+
+        $customerFullname=$request->first_name .' '.$request->last_name;
+
+        return back()->with('success',$customerFullname . ' was registered successfully!');
 
     }
 }

@@ -33,7 +33,7 @@
                     <p>Client Account</p>
                 </a>
                 <div class="dropdown-menu pb-3" aria-labelledby="navbarAccountDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ route('register_customer') }}">New Client Account</a>
+                    <a class="dropdown-item" href="{{ route('admin.register_customer') }}">New Client Account</a>
                     <a class="dropdown-item" href="{{ route('view_customers') }}">View Accounts</a>
                     <a class="dropdown-item" href="#">Bill and Payments</a>
                 </div>
