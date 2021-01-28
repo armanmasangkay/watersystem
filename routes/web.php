@@ -20,6 +20,17 @@ Route::get('/', function () {
     return view('pages.dashboard');
 });
 
-Route::get('/customer/register', [RegisterCustomerController::class, 'index'])->name('register_customer');
 
-Route::get('/customer/view-lists', [ViewCustomerController::class, 'index'])->name('view_customers');
+
+//ADMIN ROUTES
+
+Route::prefix('admin')->group(function(){
+    Route::get('/register-customer', [RegisterCustomerController::class, 'index'])->name('register_customer');
+    Route::post('/register-customer', [RegisterCustomerController::class, 'store']);
+
+
+    Route::get('/customer-lists', [ViewCustomerController::class, 'index'])->name('view_customers');
+
+});
+
+//END ADMIN ROUTES

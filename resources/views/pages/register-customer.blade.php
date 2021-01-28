@@ -12,6 +12,7 @@
                     </div>
                     <div class="card-body"> 
                         <form class="mt-5 pl-3 pr-3" action="" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -79,7 +80,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="">Others (if type is other, please specify)</label>
-                                        <input type="text" name="connection_status_other" class="form-control">
+                                        <input type="text" name="connection_type_other" class="form-control">
                                     </div>
                                 </div>
                             </div>
