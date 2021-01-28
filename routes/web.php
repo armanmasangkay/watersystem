@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/user/login', function () {
+    return view('layout.login');
+});
+
 Route::get('/', function () {
     return view('pages.dashboard');
 });
