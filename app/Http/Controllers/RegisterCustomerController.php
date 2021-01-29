@@ -60,9 +60,9 @@ class RegisterCustomerController extends Controller
             $connectionStatus=$request->connection_status_other;
         }
 
-
+        $accountNumber=$this->generateNewAccountNumber();
         Customer::create([
-            'account_number'=>$this->generateNewAccountNumber(),
+            'account_number'=>$accountNumber,
             'firstname'=>$request->first_name,
             'middlename'=>$request->middle_name,
             'lastname'=>$request->last_name,
@@ -76,7 +76,7 @@ class RegisterCustomerController extends Controller
 
         $customerFullname=$request->first_name .' '.$request->last_name;
 
-        return back()->with('success',$customerFullname . ' was registered successfully!');
+        return back()->with('success','Account number of '.   $customerFullname . ' is ('.$accountNumber.')');
 
     }
 }
