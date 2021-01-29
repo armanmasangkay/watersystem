@@ -12,6 +12,21 @@ class RegisterCustomerController extends Controller
 
     protected $accNumberPrefix="MWS_";
 
+    protected function readBarangayFile()
+    {
+
+      
+        $file=fopen(storage_path('files/barangays.txt'),'r');
+        $barangays=[];
+        // echo asset('files/barangay.txt');
+        while(!feof($file)) {
+            array_push($barangays,fgets($file));
+            // echo fgets($file). "<br>";
+        }
+        
+        fclose($file);
+        return $barangays;
+    }
 
     protected function generateNewAccountNumber()
     {
@@ -31,7 +46,11 @@ class RegisterCustomerController extends Controller
 
     public function index()
     {
-        return view('pages.register-customer', ['page' => 'Client Account Registration']);
+        $barangays=$this->readBarangayFile();
+        return view('pages.register-customer', [
+            'page' => 'Client Account Registration',
+            'barangays'=>$barangays
+        ]);
     }
 
     public function store(Request $request)

@@ -89,9 +89,14 @@
                                     
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="">Barangay <small class="text-danger">*</small></label>
-                                        <input type="text" name="barangay" id="barangay" class="form-control @error('barangay') is-invalid @enderror" required>
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-static">Barangay <small class="text-danger">*</small></label>
+                                        <select name="barangay" id="barangay" class="form-control @error('barangay') is-invalid @enderror" required>
+                                            <option value="">--Please select--</option>
+                                            @foreach ($barangays as $barangay)
+                                            <option value="{{$barangay}}">{{$barangay}}</option>
+                                            @endforeach
+                                        </select>
                                         @error('barangay')
                                         <div class="invalid-feedback">
                                             {{$message}}
