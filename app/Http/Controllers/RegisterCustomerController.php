@@ -9,34 +9,63 @@ use Illuminate\Http\Request;
 class RegisterCustomerController extends Controller
 {
 
-
     protected $accNumberPrefix="MWS_";
 
-    protected function readBarangayFile()
-    {
 
-      
-        $file=fopen(storage_path('files/barangays.txt'),'r');
+    private function extractBarangay()
+    {  
+        $file=$this->readBarangayFile();
         $barangays=[];
-        // echo asset('files/barangay.txt');
         while(!feof($file)) {
-            array_push($barangays,fgets($file));
-            // echo fgets($file). "<br>";
+            $barangay=explode("_",fgets($file));
+           
+            array_push($barangays,$barangay[1]);
         }
-        
         fclose($file);
         return $barangays;
     }
 
-    protected function generateNewAccountNumber()
+    protected function readBarangayFile()
     {
-        $dateToday=Carbon::now()->format('Ymd');
-        $count=0;
-        $tempAccNumber="";
-        do{
+        $file=fopen(storage_path('files/barangays.txt'),'r');
+       
+        return $file;
+    }
 
-            
-            $tempAccNumber=$this->accNumberPrefix.$dateToday.$count;
+    protected function getBrgyCode($barangayName)
+    {
+        $file=$this->readBarangayFile();
+
+       
+        while(!feof($file)) {
+            $barangay=explode("_",fgets($file));
+           
+            if(trim($barangay[1])==$barangayName)
+            {
+                
+                fclose($file);
+                return $barangay[0];
+            }  
+        }
+        fclose($file);
+        return null;
+
+    }
+
+    protected function generateNewAccountNumber($barangayName)
+    {
+    
+        $dateToday=Carbon::now()->format('Y');
+        $count=1;
+      
+       
+        $brgyCode=$this->getBrgyCode($barangayName);
+        $tempAccNumber="";
+    
+        do{
+            $customerCount=str_pad(strval($count),3,"0",STR_PAD_LEFT);
+            $tempAccNumber=$brgyCode.'-'.$dateToday.'-'.$customerCount;
+            // $tempAccNumber=$brgyCode.'-'.$dateToday.'-'.$customerCount;
             $customer=Customer::where('account_number',$tempAccNumber)->get();
             $count++;
 
@@ -46,7 +75,8 @@ class RegisterCustomerController extends Controller
 
     public function index()
     {
-        $barangays=$this->readBarangayFile();
+      
+        $barangays=$this->extractBarangay();
         return view('pages.register-customer', [
             'page' => 'Client Account Registration',
             'barangays'=>$barangays
@@ -78,8 +108,8 @@ class RegisterCustomerController extends Controller
         if($connectionStatus==="other"){
             $connectionStatus=$request->connection_status_other;
         }
-
-        $accountNumber=$this->generateNewAccountNumber();
+        $accountNumber=$this->generateNewAccountNumber($request->barangay);
+      
         Customer::create([
             'account_number'=>$accountNumber,
             'firstname'=>$request->first_name,
