@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\Hash;
 class ViewCustomerController extends Controller
 {
     public function index(){
-        return view('pages.customer-lists', ['page' => 'Client Account Viewing']);
+
+        return view('pages.customer-lists', ['page' => 'Client Accounts']);
     }
 
-    public function store(){
+    public function store()
+    {
+
 
     }
 }

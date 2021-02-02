@@ -65,7 +65,6 @@ class RegisterCustomerController extends Controller
         do{
             $customerCount=str_pad(strval($count),3,"0",STR_PAD_LEFT);
             $tempAccNumber=$brgyCode.'-'.$dateToday.'-'.$customerCount;
-            // $tempAccNumber=$brgyCode.'-'.$dateToday.'-'.$customerCount;
             $customer=Customer::where('account_number',$tempAccNumber)->get();
             $count++;
 
