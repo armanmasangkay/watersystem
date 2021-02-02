@@ -64,6 +64,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        {{$customers->links()}}
                     </div>
                 </div>
             </div>
