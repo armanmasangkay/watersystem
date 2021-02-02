@@ -6,10 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <!-- <div class="card-header card-header-warning">
-                        <h4 class="card-title">Register New Client</h4>
-                        <p class="card-category">Complete all the required informations</p>
-                    </div> -->
+                   
                     <div class="card-body"> 
                         <div class="d-flex justify-content-between mt-3">
                             <form class="form-inline" action="">
@@ -33,6 +30,7 @@
                                 <button class="btn btn-warning pt-3 pb-3"><i class="fas fa-print fa-sm pr-2"></i> Print</button>
                             </div>
                         </div>
+                        @if($customers->count()>0)
                         <div class="table-responsive mt-2 mb-2">
                             <table class="table table-bordered">
                                 <thead>
@@ -65,6 +63,9 @@
                             </table>
                         </div>
                         {{$customers->links()}}
+                        @else
+                            <p class="mt-5 text-center text-muted">No data to show</p>
+                        @endif
                     </div>
                 </div>
             </div>
