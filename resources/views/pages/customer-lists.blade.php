@@ -47,18 +47,20 @@
                                     </tr>
                                 </thead>
                                 <tbody class="border-top">
+                                    @foreach ($customers as $customer)
                                     <tr>
-                                        <td class="pt-1 pb-1 text-center">B-0001</td>
-                                        <td class="pt-1 pb-1 text-center">Nobegin Masob</td>
-                                        <td class="pt-1 pb-1 text-center">Bogasong, Libagon So. Lyete</td>
-                                        <td class="pt-1 pb-1 text-center">Resedential</td>
-                                        <td class="pt-1 pb-1 text-center">Active</td>
-                                        <td class="pt-1 pb-1 text-center">01-20-2021</td>
+                                        <th class="pt-1 pb-1 text-center">{{$customer->account_number}}</th>
+                                        <td class="pt-1 pb-1 text-center">{{$customer->lastname}}, {{$customer->firstname}}</td>
+                                        <td class="pt-1 pb-1 text-center">{{$customer->purok}}, {{$customer->brgy}}</td>
+                                        <td class="pt-1 pb-1 text-center">{{$customer->connection_type}}</td>
+                                        <td class="pt-1 pb-1 text-center">{{$customer->connection_status}}</td>
+                                        <td class="pt-1 pb-1 text-center">{{$customer->created_at}}</td>
                                         <td class="pt-1 pb-1 text-center" colspan="2">
                                             <a href="" class="text-info pr-2"><i class="fas fa-edit fa-sm pr-2"></i>Edit</a> |
                                             <a href="" class="text-danger pl-2"><i class="fas fa-times fa-sm pr-2"></i>Delete</a>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
