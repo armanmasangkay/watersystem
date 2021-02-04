@@ -25,8 +25,23 @@ Route::get('/', function () {
     return view('pages.dashboard');
 });
 
-Route::get('/customer/register', [RegisterCustomerController::class, 'index'])->name('register_customer');
 
+<<<<<<< HEAD
 Route::get('/customer/view-lists', [ViewCustomerController::class, 'index'])->name('view_customers');
 
 Route::get('/transactions/new', [TransactionController::class, 'index'])->name('new_transaction');
+=======
+
+//ADMIN ROUTES
+
+Route::prefix('admin')->group(function(){
+    Route::get('/register-customer', [RegisterCustomerController::class, 'index'])->name('admin.register_customer');
+    Route::post('/register-customer', [RegisterCustomerController::class, 'store']);
+
+
+    Route::get('/customer-lists', [ViewCustomerController::class, 'index'])->name('view_customers');
+
+});
+
+//END ADMIN ROUTES
+>>>>>>> cfadb12b2656f385e98d9d2df93ee6d886e0c982

@@ -1,9 +1,13 @@
 <?php
 
-use App\Http\Controllers\CustomersController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\api\CreateUserController;
+use App\Http\Controllers\api\RegisterController;
+use App\Http\Controllers\api\CustomersController;
+use App\Http\Controllers\api\LoginUserController;
+use App\Http\Controllers\api\LogoutUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +20,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group([
+    'middleware'=>'jwt.verify',
 
-Route::post('/register',[RegisterController::class,'store'])->name('register-customer');
-Route::get('/register',[CustomersController::class,'getAll'])->name('customers.all');
-
-
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+],function(){
+    Route::post('/register',[RegisterController::class,'store'])->name('register-customer');
+    Route::get('/customers',[CustomersController::class,'getAll'])->name('customers.all');
+    Route::post('/create-admin',[CreateUserController::class,'create'])->name('create-user');
+  
 });
+
+
+
+Route::post('/login-admin',[LoginUserController::class,'login'])->name('admin-login');
+Route::post('/logout-admin',[LogoutUserController::class,'logout'])->name('admin-logout');
+
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });

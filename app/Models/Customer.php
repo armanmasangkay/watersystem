@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class Customer extends Model
 {
@@ -25,7 +26,7 @@ class Customer extends Model
     public $incrementing=false;
     protected $keyType = 'string';
 
-
+    
     
     
 }
