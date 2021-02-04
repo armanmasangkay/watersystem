@@ -26,11 +26,6 @@ Route::get('/', function () {
 });
 
 
-<<<<<<< HEAD
-Route::get('/customer/view-lists', [ViewCustomerController::class, 'index'])->name('view_customers');
-
-Route::get('/transactions/new', [TransactionController::class, 'index'])->name('new_transaction');
-=======
 
 //ADMIN ROUTES
 
@@ -44,4 +39,3 @@ Route::prefix('admin')->group(function(){
 });
 
 //END ADMIN ROUTES
->>>>>>> cfadb12b2656f385e98d9d2df93ee6d886e0c982
