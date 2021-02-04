@@ -38,6 +38,16 @@
                     <a class="dropdown-item" href="#">Bill and Payments</a>
                 </div>
             </li>
+            <li class="nav-item dropdown {{ Request::is('transactions*') ? 'active' : '' }}">
+                <a class="nav-link" href="#" id="navbarAccountDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="material-icons">store</i>
+                    <p>Transactions</p>
+                </a>
+                <div class="dropdown-menu pb-3" aria-labelledby="navbarAccountDropdownMenuLink">
+                    <a class="dropdown-item" href="{{ route('new_transaction') }}">New Transaction</a>
+                    <a class="dropdown-item" href="">View Transactions</a>
+                </div>
+            </li>
             <li class="nav-item ">
                 <a class="nav-link" href="./tables.html">
                     <i class="material-icons">settings</i>
