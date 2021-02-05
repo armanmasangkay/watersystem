@@ -52,6 +52,7 @@ class RegisterCustomerController extends Controller
 
     }
 
+
     protected function generateNewAccountNumber($barangayName)
     {
     
@@ -71,6 +72,8 @@ class RegisterCustomerController extends Controller
         }while($customer->count()>0);
         return $tempAccNumber;
     }
+
+
 
     public function index()
     {
