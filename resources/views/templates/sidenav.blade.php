@@ -23,7 +23,7 @@
                     <p>System User</p>
                 </a>
                 <div class="dropdown-menu pb-3" aria-labelledby="navbarUserDropdownMenuLink">
-                    <a class="dropdown-item" href="#">New User</a>
+                    <a class="dropdown-item" href="{{ route('add_user') }}">New User</a>
                     <a class="dropdown-item" href="#">View Users</a>
                 </div>
             </li>

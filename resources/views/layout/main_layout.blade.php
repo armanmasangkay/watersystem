@@ -39,6 +39,7 @@
             @yield('registerCustomer_content')
             @yield('customerLists_content')
             @yield('newTransactions_content')
+            @yield('addUser_content')
 
             @include('templates.footer')
         </div>
