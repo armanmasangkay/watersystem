@@ -13,14 +13,14 @@
                     <div class="card-body"> 
                         <form class="mt-5 pl-3 pr-3" action="" method="post">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-12 mb-2">
                                     <h4>Account Number : <span>01-2020-123</span></h4>
                                     <h4>Account Name : <span>Nobegin Masob</span></h4>
                                     <h4>Address : <span>Purok Mangga, Brgy. Bogasong, Libagon</span></h4>
                                     <h4>Contact : <span>09012626345</span></h4>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mt-5">
                                 <div class="col-md-4">
                                     <div class="form-group bmd-form-group">
                                         <label class="bmd-label-static">Type of Services</label>
