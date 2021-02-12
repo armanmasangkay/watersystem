@@ -38,6 +38,7 @@
             @yield('dashboard_content')
             @yield('registerCustomer_content')
             @yield('customerLists_content')
+            @yield('newTransactions_content')
 
             @include('templates.footer')
         </div>

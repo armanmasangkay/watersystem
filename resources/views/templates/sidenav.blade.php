@@ -17,7 +17,7 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li class="nav-item {{ Request::is('user*') ? 'active' : '' }}">
+            <li class="nav-item {{ Request::is('admin/user*') ? 'active' : '' }}">
                 <a class="nav-link" href="#" id="navbarUserDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">lock</i>
                     <p>System User</p>
@@ -27,7 +27,7 @@
                     <a class="dropdown-item" href="#">View Users</a>
                 </div>
             </li>
-            <li class="nav-item dropdown {{ Request::is('customer*') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ (Request::is('admin/register-customer') || Request::is('admin/customer-lists')) ? 'active' : '' }}">
                 <a class="nav-link" href="#" id="navbarAccountDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">persons</i>
                     <p>Client Account</p>
@@ -36,6 +36,16 @@
                     <a class="dropdown-item" href="{{ route('admin.register_customer') }}">New Client Account</a>
                     <a class="dropdown-item" href="{{ route('view_customers') }}">View Accounts</a>
                     <a class="dropdown-item" href="#">Bill and Payments</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown {{ Request::is('admin/transactions*') ? 'active' : '' }}">
+                <a class="nav-link" href="#" id="navbarAccountDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="material-icons">store</i>
+                    <p>Transactions</p>
+                </a>
+                <div class="dropdown-menu pb-3" aria-labelledby="navbarAccountDropdownMenuLink">
+                    <a class="dropdown-item" href="{{ route('new_transaction') }}">New Transaction</a>
+                    <a class="dropdown-item" href="">View Transactions</a>
                 </div>
             </li>
             <li class="nav-item ">

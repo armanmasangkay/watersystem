@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RegisterCustomerController;
 use App\Http\Controllers\ViewCustomerController;
+use App\Http\Controllers\TransactionController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+*/ 
 
 Route::get('/user/login', function () {
     return view('layout.login');
@@ -24,8 +25,6 @@ Route::get('/', function () {
     return view('pages.dashboard');
 });
 
-
-
 //ADMIN ROUTES
 
 Route::prefix('admin')->group(function(){
@@ -34,6 +33,8 @@ Route::prefix('admin')->group(function(){
 
 
     Route::get('/customer-lists', [ViewCustomerController::class, 'index'])->name('view_customers');
+
+    Route::get('/transactions/new', [TransactionController::class, 'index'])->name('new_transaction');
 
 });
 
