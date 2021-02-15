@@ -4,6 +4,7 @@ use App\Http\Controllers\RegisterCustomerController;
 use App\Http\Controllers\ViewCustomerController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserListsController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,10 @@ Route::prefix('admin')->group(function(){
     Route::get('/transactions/new', [TransactionController::class, 'index'])->name('new_transaction');
 
     Route::get('/user/add-new', [UserController::class, 'index'])->name('add_user');
-    
+
+
+    Route::get('/user/lists', [UserListsController::class, 'index'])->name('user_lists');
+
     Route::get('/login', function () {
         return view('layout.login');
     });
