@@ -35,10 +35,7 @@
             <!-- navbar -->
             @include('templates.navbar')
 
-            @yield('dashboard_content')
-            @yield('registerCustomer_content')
-            @yield('customerLists_content')
-            @yield('newTransactions_content')
+            @yield('content')
 
             @include('templates.footer')
         </div>
