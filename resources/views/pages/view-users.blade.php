@@ -21,14 +21,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($system_users as $users)
                                     <tr>
-                                        <td class="pt-1 pb-1">&nbsp;</td>
-                                        <td class="pt-1 pb-1"></td>
+                                        <td class="pt-1 pb-1">{{ $users->id }}</td>
+                                        <td class="pt-1 pb-1">{{ $users->username }}</td>
                                         <td colspan="2" class="pt-1 pb-1">
-                                            <a href="#" class="text-warning pr-2"><i class="far fa-edit"></i></a> |
-                                            <a href="" class="text-danger pl-2"><i class="far fa-trash-alt"></i></a>
+                                            <a href="#" class="text-warning pr-2"><i class="far fa-edit pr-1"></i> Edit</a> |
+                                            <a href="" class="text-danger pl-2"><i class="far fa-trash-alt pr-1"></i> Delete</a>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
