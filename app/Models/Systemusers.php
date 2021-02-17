@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class UserModel extends Model
+class Systemusers extends Authenticatable
 {
     use HasFactory;
 
     protected $fillable=[
-
+        'username',
+        'password',
     ];
     
 }

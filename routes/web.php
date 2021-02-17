@@ -5,6 +5,7 @@ use App\Http\Controllers\ViewCustomerController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserListsController;
+use App\Http\Controllers\LoginController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -31,17 +32,16 @@ Route::prefix('admin')->group(function(){
     Route::get('/transactions/new', [TransactionController::class, 'index'])->name('new_transaction');
 
     Route::get('/user/add-new', [UserController::class, 'index'])->name('add_user');
-
+    Route::post('/user/add-new', [UserController::class, 'store']);
 
     Route::get('/user/lists', [UserListsController::class, 'index'])->name('user_lists');
 
-    Route::get('/login', function () {
-        return view('layout.login');
-    });
+    Route::get('/login', [LoginController::class,'index'])->name('login');
+    Route::post('/login', [LoginController::class,'authenticate']);
 
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         return view('pages.dashboard');
-    });
+    })->name('dashboard');
 });
 
 //END ADMIN ROUTES

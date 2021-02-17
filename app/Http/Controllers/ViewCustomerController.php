@@ -13,7 +13,7 @@ class ViewCustomerController extends Controller
     public function index()
     {
         $customers=Customer::paginate(15);
-       
+        
         return view('pages.customer-lists', [
             'page' => 'Client Accounts',
             'customers'=>$customers
