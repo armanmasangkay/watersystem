@@ -9,7 +9,8 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class Customer extends Model
 {
     use HasFactory;
-
+    protected $primaryKey='account_number';
+    
     protected $fillable=[
         'account_number',
         'firstname',

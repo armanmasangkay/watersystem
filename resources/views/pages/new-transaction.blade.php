@@ -1,6 +1,7 @@
 @extends('layout.main_layout')
 
 @section('newTransactions_content')
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -9,6 +10,13 @@
                     <div class="card-header card-header-warning">
                         <h4 class="card-title">Add New Transaction</h4>
                         <p class="card-category">Complete all the required informations</p>
+
+                        <form action="{{route('new_transaction.search')}}" method="get">
+                            <input type="text" name="customerId" class="form-control" placeholder="Customer ID" >
+                            <button type="submit" class="btn btn-warning pull-left">Search</button>
+                        </form>
+                    
+                  
                     </div>
                     <div class="card-body"> 
                         <form class="mt-5 pl-3 pr-3" action="" method="post">
@@ -27,6 +35,7 @@
                                         </select>
                                     </div>
                                 </div>
+                           
                                 <div class="col-md-4">
                                     <div class="form-group bmd-form-group sub_services_1">
                                         <label class="bmd-label-static" id="service">Select type of service first</label>
