@@ -23,8 +23,8 @@
                     <p>System User</p>
                 </a>
                 <div class="dropdown-menu pb-3" aria-labelledby="navbarUserDropdownMenuLink">
-                    <a class="dropdown-item" href="#">New User</a>
-                    <a class="dropdown-item" href="#">View Users</a>
+                    <a class="dropdown-item" href="{{ route('add_user') }}">New User</a>
+                    <a class="dropdown-item" href="{{ route('user_lists') }}">View Users</a>
                 </div>
             </li>
             <li class="nav-item dropdown {{ (Request::is('admin/register-customer') || Request::is('admin/customer-lists')) ? 'active' : '' }}">
