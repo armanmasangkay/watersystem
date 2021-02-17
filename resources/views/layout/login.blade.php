@@ -32,18 +32,27 @@
                         <p class="card-category">Please complete neccessary fields</p>
                     </div>
                     <div class="card-body"> 
-                        <form class="mt-2 pl-3 pr-3" action="" method="post">
+                        @error('username')
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ $message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>                                
+                        </div>
+                        @enderror
+                        <form class="mt-2 pl-3 pr-3" action="{{ route('login') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="bmd-label-static">Username</label>
-                                        <input type="text" name="last_name" class="form-control">
+                                        <input type="text" name="username" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-12 mt-4">
                                     <div class="form-group">
                                         <label class="">Password</label>
-                                        <input type="password" name="first_name" class="form-control">
+                                        <input type="password" name="password" class="form-control">
                                     </div>
                                 </div>
                             </div>
