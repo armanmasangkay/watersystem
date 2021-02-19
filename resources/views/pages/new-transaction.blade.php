@@ -15,16 +15,19 @@
                             <button type="submit" class="btn btn-warning pull-left">Search</button>
                         </form>
                     
-                  
+                    
                     </div>
+                    
+                   
                     <div class="card-body"> 
+                        @if(session('status')=="success")
                         <form class="mt-5 pl-3 pr-3" action="" method="post">
                             <div class="row">
                                 <div class="col-md-12 mb-2">
-                                    <h4>Account Number : <span>01-2020-123</span></h4>
-                                    <h4>Account Name : <span>Nobegin Masob</span></h4>
-                                    <h4>Address : <span>Purok Mangga, Brgy. Bogasong, Libagon</span></h4>
-                                    <h4>Contact : <span>09012626345</span></h4>
+                                    <h4>Account Number : <span>{{session('customer')->account_number}}</span></h4>
+                                    <h4>Account Name : <span>{{session('customer')->firstname}} {{session('customer')->lastname}}</span></h4>
+                                    <h4>Address : <span>{{session('customer')->purok}}, Brgy. {{session('customer')->brgy}}, Macrohon</span></h4>
+                                    <h4>Contact : <span>{{session('customer')->contact_number}}</span></h4>
                                 </div>
                             </div>
                             <div class="row mt-5">
@@ -62,16 +65,12 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-6">
+
+                                
                                     <div class="form-group bmd-form-group">
-                                        <label class="bmd-label-static">Connection Type</label>
-                                        <select name="connection_type" class="form-control" id="select1">
-                                            <option></option>
-                                            <option>Residential</option>
-                                            <option>Commercial</option>
-                                            <option>Institutional</option>
-                                            <option>Other</option>
-                                            <option>Mainline</option>
-                                        </select>
+                                        <label class="bmd-label-static">Connection Type (Information based on account)</label>
+                                        <input type="text" name="connection_type" class="form-control" value="{{session('customer')->connection_type}}" disabled>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -100,6 +99,16 @@
                             <button type="submit" class="btn btn-warning pull-left mt-5">Save Transaction</button>
                             <div class="clearfix mb-4"></div>
                         </form>
+                        @else
+                           <p class="text-center text-muted mt-4"><i class="fas fa-exclamation-circle"></i> 
+                           @if(session('message'))
+                           {{session('message') }} 
+                           @else 
+                            Please search a Customer ID
+                           @endif</p>
+                            
+
+                        @endif
                     </div>
                 </div>
             </div>

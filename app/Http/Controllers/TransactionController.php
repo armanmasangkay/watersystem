@@ -34,6 +34,20 @@ class TransactionController extends Controller
     {
         $customerId=$request->customerId;
         $customer= $this->fetchCustomerById($customerId);
-        return back()->with('customer',$customer);
+
+        if(!$customer){
+            return back()->with([
+                'status'=>'error',
+                'message'=>'Invalid customer ID'
+            ]);
+        }
+
+
+        return back()->with([
+            'status'=>'success',
+            'customer'=>$customer,
+
+        ]);
+      
     }
 }
