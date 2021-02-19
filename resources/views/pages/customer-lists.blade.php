@@ -55,7 +55,7 @@
                                         <td class="pt-1 pb-1 text-center">{{$customer->created_at}}</td>
                                         <td class="pt-1 pb-1 text-center" colspan="2">
                                             <a href="" class="text-info pr-2"><i class="fas fa-edit fa-sm pr-2"></i>Edit</a> |
-                                            <a href="" class="text-danger pl-2"><i class="fas fa-times fa-sm pr-2"></i>Delete</a>
+                                            <a href="" class="text-danger pl-2 delete"><i class="fas fa-times fa-sm pr-2"></i>Delete</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -72,4 +72,23 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('custom_js')
+<script>
+
+    $(document).ready(function(){
+        
+        $(".delete").click(function(e){
+            e.preventDefault()
+            alert('delete button pressed')
+        })
+
+    })
+
+
+
+</script>
+
 @endsection

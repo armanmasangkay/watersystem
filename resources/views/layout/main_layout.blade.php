@@ -42,6 +42,8 @@
     </div>
 
     @include('templates.script-links')
+
+    @yield('custom_js')
 </body>
 
 </html>

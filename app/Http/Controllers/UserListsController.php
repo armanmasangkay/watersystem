@@ -9,12 +9,14 @@ use Illuminate\Support\Facades\Hash;
 class UserListsController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         $users = Systemusers::get();
         return view('pages.view-users', ['page' => 'System Users', 'system_users' => $users]);
     }
 
-    public function store(){
+    public function store()
+    {
 
     }
 }
