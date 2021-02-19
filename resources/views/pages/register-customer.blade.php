@@ -189,3 +189,33 @@
     </div>
 </div>
 @endsection
+
+@section('custom_js')
+<script>
+    $(document).ready(function(){
+        var select = document.getElementById("select");
+        select.addEventListener("focus", myFocusFunction, true);
+        select.addEventListener("blur", myBlurFunction, true);
+
+        var select1 = document.getElementById("select1");
+        select1.addEventListener("focus", myFocusFunction1, true);
+        select1.addEventListener("blur", myBlurFunction1, true);
+
+        function myFocusFunction() {
+            $('#select').parent().addClass('is-focused')
+        }
+
+        function myBlurFunction() {
+            $('#select').parent().removeClass('is-focused')
+        }
+
+        function myFocusFunction1() {
+            $('#select1').parent().addClass('is-focused')
+        }
+
+        function myBlurFunction1() {
+            $('#select1').parent().removeClass('is-focused')
+        }
+    })
+</script>
+@endsection
