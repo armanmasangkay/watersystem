@@ -40,7 +40,12 @@
                         <a class="dropdown-item" href="#">Profile</a>
                         <a class="dropdown-item" href="#">Settings</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Log out</a>
+                        <form action="{{route('logout')}}" method="post">
+                            @csrf
+                            <button type="submit" class="dropdown-item btn-link">Log out</button>
+                            {{-- <a class="dropdown-item" href="#">Log out</a> --}}
+                        </form>
+                        
                     </div>
                 </li>
             </ul>

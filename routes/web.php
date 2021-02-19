@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\api\LogoutUserController;
 use App\Http\Controllers\RegisterCustomerController;
 use App\Http\Controllers\ViewCustomerController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserListsController;
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\LogoutSystemUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/dashboard', function () {
         return view('pages.dashboard');
     })->name('dashboard');
+
+    Route::post('/logout',[LogoutSystemUserController::class,'logout'])->name('logout');
+
 });
 
 Route::get('/login', [LoginController::class,'index'])->name('login');
