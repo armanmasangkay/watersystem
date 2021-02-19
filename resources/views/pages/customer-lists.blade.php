@@ -55,7 +55,9 @@
                                         <td class="pt-1 pb-1 text-center">{{$customer->created_at}}</td>
                                         <td class="pt-1 pb-1 text-center" colspan="2">
                                             <a href="" class="text-info pr-2"><i class="fas fa-edit fa-sm pr-2"></i>Edit</a> |
-                                            <a href="" class="text-danger pl-2 delete"><i class="fas fa-times fa-sm pr-2"></i>Delete</a>
+                                            <a href="" class="text-danger pl-2 delete" data-account-number="{{$customer->account_number}}">
+                                                <i class="fas fa-times fa-sm pr-2"></i>Delete
+                                            </a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -82,7 +84,23 @@
         
         $(".delete").click(function(e){
             e.preventDefault()
-            alert('delete button pressed')
+            let accountNumber=$(this).data('account-number')
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                   alert('delete')
+                }
+            })
+           
+
         })
 
     })
