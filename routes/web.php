@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //ADMIN ROUTES
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/register-customer', [RegisterCustomerController::class, 'index'])->name('admin.register_customer');
     Route::post('/register-customer', [RegisterCustomerController::class, 'store']);
     Route::get('/customer-lists', [ViewCustomerController::class, 'index'])->name('view_customers');
@@ -38,12 +38,14 @@ Route::prefix('admin')->group(function(){
 
     Route::get('/user/lists', [UserListsController::class, 'index'])->name('user_lists');
 
-    Route::get('/login', [LoginController::class,'index'])->name('login');
-    Route::post('/login', [LoginController::class,'authenticate']);
-
+  
     Route::get('/dashboard', function () {
         return view('pages.dashboard');
     })->name('dashboard');
 });
+
+Route::get('/login', [LoginController::class,'index'])->name('login');
+Route::post('/login', [LoginController::class,'authenticate']);
+
 
 //END ADMIN ROUTES
