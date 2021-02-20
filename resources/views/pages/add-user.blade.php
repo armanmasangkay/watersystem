@@ -49,7 +49,7 @@
                                 </div> -->
                             </div>
                             <center>
-                                <button type="submit" class="btn btn-warning mt-5">Save Transaction</button>
+                                <button type="submit" class="btn btn-warning mt-5">Submit</button>
                             </center>
                             
                             <div class="clearfix mb-4"></div>
