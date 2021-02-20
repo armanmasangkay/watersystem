@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Classes\Interfaces\IUserAccountNumber;
+use App\Classes\UserAccountNumber;
 use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,6 +23,9 @@ class CustomerFactory extends Factory
      */
     public function definition()
     {
+
+        // IUserAccountNumber $accountNumber=new UserAccountNumber();
+
         return [
           
             'account_number'=>$this->faker->unique()->randomNumber(4),

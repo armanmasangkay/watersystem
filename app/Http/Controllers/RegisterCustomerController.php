@@ -2,19 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\BarangayFile;
+use App\Classes\Interfaces\IAccountNumber;
+use App\Classes\Interfaces\IUserAccountNumber;
+use App\Classes\UserAccountNumber;
 use App\Models\Customer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RegisterCustomerController extends Controller
 {
+    private IUserAccountNumber $accountNumber;
 
-    protected $accNumberPrefix="MWS_";
+    public function __construct()
+    {
+        $this->accountNumber=new UserAccountNumber();
+    }
 
 
     private function extractBarangay()
     {  
-        $file=$this->readBarangayFile();
+        $file=BarangayFile::get();
         $barangays=[];
         while(!feof($file)) {
             $barangay=explode("_",fgets($file));
@@ -25,60 +33,12 @@ class RegisterCustomerController extends Controller
         return $barangays;
     }
 
-    protected function readBarangayFile()
-    {
-        $file=fopen(storage_path('files/barangays.txt'),'r');
-       
-        return $file;
-    }
-
-    protected function getBrgyCode($barangayName)
-    {
-        $file=$this->readBarangayFile();
-
-       
-        while(!feof($file)) {
-            $barangay=explode("_",fgets($file));
-           
-            if(trim($barangay[1])==$barangayName)
-            {
-                
-                fclose($file);
-                return $barangay[0];
-            }  
-        }
-        fclose($file);
-        return null;
-
-    }
-
-
-    protected function generateNewAccountNumber($barangayName)
-    {
-    
-        $dateToday=Carbon::now()->format('Y');
-        $count=1;
-      
-       
-        $brgyCode=$this->getBrgyCode($barangayName);
-        $tempAccNumber="";
-    
-        do{
-            $customerCount=str_pad(strval($count),3,"0",STR_PAD_LEFT);
-            $tempAccNumber=$brgyCode.'-'.$dateToday.'-'.$customerCount;
-            $customer=Customer::where('account_number',$tempAccNumber)->get();
-            $count++;
-
-        }while($customer->count()>0);
-        return $tempAccNumber;
-    }
-
-
 
     public function index()
     {
       
         $barangays=$this->extractBarangay();
+
         return view('pages.register-customer', [
             'page' => 'Client Account Registration',
             'barangays'=>$barangays
@@ -110,7 +70,11 @@ class RegisterCustomerController extends Controller
         if($connectionStatus==="other"){
             $connectionStatus=$request->connection_status_other;
         }
-        $accountNumber=$this->generateNewAccountNumber($request->barangay);
+
+        $this->accountNumber->setBarangay($request->barangay);
+        $accountNumber=$this->accountNumber->generateNew();
+
+    
       
         Customer::create([
             'account_number'=>$accountNumber,
