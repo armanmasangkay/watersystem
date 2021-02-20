@@ -32,8 +32,6 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/register-customer', [RegisterCustomerController::class, 'index'])->name('admin.register_customer');
  
     Route::post('/register-customer', [RegisterCustomerController::class, 'store']);
-
-
     Route::get('/customer-lists', [ViewCustomerController::class, 'index'])->name('view_customers');
 
     Route::delete('/customer',[CustomerController::class,'delete'])->name('delete-customer');
@@ -54,7 +52,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 });
 
 //END ADMIN ROUTES
-
+Route::get('/',function(){
+    return redirect('login');
+});
 
 Route::get('/login', [LoginController::class,'index'])->name('login');
 Route::post('/login', [LoginController::class,'authenticate']);
