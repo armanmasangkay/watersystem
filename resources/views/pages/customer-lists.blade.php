@@ -46,7 +46,7 @@
                                 </thead>
                                 <tbody class="border-top">
                                     @foreach ($customers as $customer)
-                                    <tr>
+                                    <tr id="row-{{$customer->account_number}}">
                                         <th class="pt-1 pb-1 text-center">{{$customer->account_number}}</th>
                                         <td class="pt-1 pb-1 text-center">{{$customer->lastname}}, {{$customer->firstname}}</td>
                                         <td class="pt-1 pb-1 text-center">{{$customer->purok}}, {{$customer->brgy}}</td>
@@ -55,7 +55,9 @@
                                         <td class="pt-1 pb-1 text-center">{{$customer->created_at}}</td>
                                         <td class="pt-1 pb-1 text-center" colspan="2">
                                             <a href="" class="text-info pr-2"><i class="fas fa-edit fa-sm pr-2"></i>Edit</a> |
-                                            <a href="" class="text-danger pl-2 delete" data-account-number="{{$customer->account_number}}">
+                                            <a href="" class="text-danger pl-2 delete" 
+                                            data-account-number="{{$customer->account_number}}"
+                                            data-target-row="#row{{$customer->account_number}}">
                                                 <i class="fas fa-times fa-sm pr-2"></i>Delete
                                             </a>
                                         </td>
@@ -85,21 +87,48 @@
         $(".delete").click(function(e){
             e.preventDefault()
             let accountNumber=$(this).data('account-number')
-
+            let rowTarget=$(this).data('row-target');
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
+                title: 'Enter your Admin password',
+                input: 'password',
+                inputAttributes: {
+                    autocapitalize: 'off'
+                },
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Submit',
+                showLoaderOnConfirm: true,
+                preConfirm: (password) => {
+                    return $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url:'{{route('verify-admin-pass')}}',
+                        data:{password:password,account_number:accountNumber},
+                        dataType:'json',
+                        method:'post'
+                    }).done(function(response){
+                        return response;
+                    }).fail(function(){
+                        Swal.fire('Error','There seems to be a problem with the server. Please contact administrator','error');
+                    })
+                },
+                allowOutsideClick: () => !Swal.isLoading()
                 }).then((result) => {
-                if (result.isConfirmed) {
-                   alert('delete')
-                }
+                    if(result.value.status==="verified"){
+
+                        Swal.fire('Great!',result.value.message,'success');
+                        //TODO: Make customer seeder
+                        //remove row after deletion
+
+
+
+                        $(rowTarget).remove();
+
+                    }else{
+                        Swal.fire('Password Error','Password did not match. Please try again!','warning');
+                    }
+             
             })
-           
 
         })
 

@@ -4,8 +4,9 @@ namespace Database\Factories;
 
 use App\Models\Systemusers;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
-class SystemUserFactory extends Factory
+class SystemusersFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
@@ -22,7 +23,8 @@ class SystemUserFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'username'=>$this->faker->userName,
+            'password'=>Hash::make("1234"),
         ];
     }
 }
