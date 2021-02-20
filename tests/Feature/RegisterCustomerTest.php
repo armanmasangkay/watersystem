@@ -18,7 +18,7 @@ class RegisterCustomerTest extends TestCase
     
     }
 
-    public function test_fail_if_contact_number_is_not_numeric()
+    public function test_fail_if_contact_number_is_numeric()
     {
         $systemUser=$this->getSystemuser();
 

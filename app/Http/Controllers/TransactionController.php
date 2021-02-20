@@ -42,7 +42,6 @@ class TransactionController extends Controller
             ]);
         }
 
-
         return back()->with([
             'status'=>'success',
             'customer'=>$customer,
