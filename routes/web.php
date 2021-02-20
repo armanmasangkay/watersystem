@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\api\LogoutUserController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterCustomerController;
 use App\Http\Controllers\ViewCustomerController;
 use App\Http\Controllers\TransactionController;
@@ -47,9 +48,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
     Route::get('/user/lists', [UserListsController::class, 'index'])->name('user_lists');
     
-    Route::get('/dashboard', function () {
-        return view('pages.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::post('/logout',[LogoutSystemUserController::class,'logout'])->name('logout');
   
 });
