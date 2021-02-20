@@ -3,23 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Classes\BarangayFile;
-use App\Classes\Interfaces\IAccountNumber;
-use App\Classes\Interfaces\IUserAccountNumber;
-use App\Classes\UserAccountNumber;
+use App\Classes\Facades\UserAccountNumber;
 use App\Models\Customer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RegisterCustomerController extends Controller
 {
-    private IUserAccountNumber $accountNumber;
-
-    public function __construct()
-    {
-        $this->accountNumber=new UserAccountNumber();
-    }
-
-
+    
     private function extractBarangay()
     {  
         $file=BarangayFile::get();
@@ -70,12 +61,8 @@ class RegisterCustomerController extends Controller
         if($connectionStatus==="other"){
             $connectionStatus=$request->connection_status_other;
         }
-
-        $this->accountNumber->setBarangay($request->barangay);
-        $accountNumber=$this->accountNumber->generateNew();
-
-    
-      
+        $accountNumber=UserAccountNumber::generateNew($request->barangay);
+        
         Customer::create([
             'account_number'=>$accountNumber,
             'firstname'=>$request->first_name,

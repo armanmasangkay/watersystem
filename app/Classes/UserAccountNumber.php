@@ -8,7 +8,7 @@ use Carbon\Carbon;
 class UserAccountNumber implements IUserAccountNumber{
 
     private string $barangay;
-    
+
     protected function getBrgyCode($barangayName)
     {
         $file=BarangayFile::get();
