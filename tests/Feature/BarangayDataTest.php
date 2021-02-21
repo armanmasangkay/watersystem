@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Classes\BarangayFile;
 use App\Models\Systemusers;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -19,5 +20,13 @@ class BarangayDataTest extends TestCase
         $this->assertTrue($hasData);
 
     }
+
+    public function test_was_able_to_read_file()
+    {
+       $file= BarangayFile::get();
+       $hasFile=$file?true:false;
+       $this->assertTrue($hasFile);
+    }
+    
 
 }
