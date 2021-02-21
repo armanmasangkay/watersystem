@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Classes\BarangayFile;
+use App\Classes\CustomerRandomData;
 use App\Classes\Facades\UserAccountNumber;
 
 use App\Models\Customer;
@@ -22,22 +23,24 @@ class CustomerFactory extends Factory
      *
      * @return array
      */
-    public function definition()
-    {
 
+
+    public function definition()
+    {  
+        $faker=new CustomerRandomData();
+        $barangay=BarangayFile::getRandomBarangay();
      
         return [
-          
-            'account_number'=>UserAccountNumber::generateNew(BarangayFile::getRandomBarangay()),
+            'account_number'=>UserAccountNumber::generateNew($barangay),
             'firstname'=>$this->faker->firstName(),
             'middlename'=>$this->faker->lastName(),
             'lastname'=>$this->faker->lastName(),
-            'civil_status'=>'Married',
-            'purok'=>$this->faker->cityPrefix,
-            'brgy'=>$this->faker->cityPrefix,
-            'contact_number'=>$this->faker->phoneNumber,
-            'connection_type'=>$this->faker->realText(20),
-            'connection_status'=>$this->faker->realText(20)
+            'civil_status'=>$faker->civilStatus(),
+            'purok'=>$faker->purok(),
+            'brgy'=>$barangay,
+            'contact_number'=>$faker->contactNumber(),
+            'connection_type'=>$faker->connectionType(),
+            'connection_status'=>$faker->connectionStatus()
             
         ];
     }

@@ -19,19 +19,19 @@ class CustomerRandomData implements IRandomData{
     }
     public function barangay():string
     {
-
+       return BarangayFile::getRandomBarangay(); 
     }
     public function contactNumber():string
     {
-
+        return "09123563421";
     }
     public function connectionType():string
     {
-
+        return $this->connectionType[random_int(0,2)];
     }
     public function connectionStatus():string
     {
-
+        return $this->connectionStatus[random_int(0,1)];
     }
 
 }

@@ -31,20 +31,15 @@ class UserAccountNumber implements IUserAccountNumber{
 
     protected function generateNewAccountNumber($barangayName)
     {
-    
         $dateToday=Carbon::now()->format('Y');
         $count=1;
-      
-       
         $brgyCode=$this->getBrgyCode($barangayName);
         $tempAccNumber="";
-    
         do{
             $customerCount=str_pad(strval($count),3,"0",STR_PAD_LEFT);
             $tempAccNumber=$brgyCode.'-'.$dateToday.'-'.$customerCount;
             $customer=Customer::where('account_number',$tempAccNumber)->get();
             $count++;
-
         }while($customer->count()>0);
         return $tempAccNumber;
     }

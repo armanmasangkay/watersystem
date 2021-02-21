@@ -26,7 +26,7 @@ class BarangayFile{
     {
        $barangays=BarangayFile::getBarangays();
        $arrSize=count($barangays);
-       return $barangays[random_int(0,$arrSize)];
+       return $barangays[random_int(0,$arrSize-1)];
     }
 
     public static function isValidBarangay($brgy)
